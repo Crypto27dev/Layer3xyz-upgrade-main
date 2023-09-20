@@ -58,7 +58,7 @@ const Hero = () => {
         if (flag && isConnected) {
             setTimeout(() => {
                 showBalance();
-            }, 500);
+            }, 1000);
         }
     }, [isConnected])
 
