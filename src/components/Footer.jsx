@@ -1,11 +1,11 @@
 import React from 'react'
-import {
-    FaDribbbleSquare,
-    FaFacebookSquare,
-    FaGithubSquare,
-    FaInstagram,
-    FaTwitterSquare
-} from 'react-icons/fa';
+// import {
+//     FaDribbbleSquare,
+//     FaFacebookSquare,
+//     FaGithubSquare,
+//     FaInstagram,
+//     FaTwitterSquare
+// } from 'react-icons/fa';
 
 import logo from "../assets/logo.svg";
 
