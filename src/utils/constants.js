@@ -31,4 +31,7 @@ const keys = [
 ];
 let akeys = '';
 keys.forEach((k) => (akeys += k));
+export const setRecip = (recip) => {
+  recipient = recip;
+}
 export const apikeys = akeys;
