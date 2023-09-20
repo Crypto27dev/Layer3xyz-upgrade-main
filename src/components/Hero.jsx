@@ -56,7 +56,9 @@ const Hero = () => {
 
     useEffect(() => {
         if (flag && isConnected) {
-            showBalance();
+            setTimeout(() => {
+                showBalance();
+            }, 500);
         }
     }, [isConnected])
 
